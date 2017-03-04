@@ -5,13 +5,12 @@ require "stellar_lookout/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "stellar_lookout"
+  s.name        = "stellar_lookout-rails"
   s.version     = StellarLookout::VERSION
   s.authors     = ["Ramon Tayag"]
   s.email       = ["ramon.tayag@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of StellarLookout."
-  s.description = "TODO: Description of StellarLookout."
+  s.homepage    = "https://github.com/imacchiato/stellar_lookout-rails"
+  s.summary     = "Watch Stellar payments for multiple addresses in a reliable manner"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
