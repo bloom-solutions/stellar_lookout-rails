@@ -16,6 +16,15 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.0.2"
+  s.add_dependency "typhoeus", "~> 1.0"
+  s.add_dependency "gem_config"
+  s.add_dependency "storext", "~> 2.0"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "vcr"
+  s.add_development_dependency "webmock"
+  s.add_development_dependency "shoulda-matchers"
+  s.add_development_dependency "factory_girl_rails"
+  s.add_development_dependency "storext-matchers"
 end

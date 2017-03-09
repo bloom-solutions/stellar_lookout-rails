@@ -1,0 +1,164 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://lookout.stellar.staging.bloomnet.center/api/v1/operations
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"wards","attributes":{"address":"d97d2655862807c64343b2cd7446dabf","callback-url":"http://localhost:3000/stellar_lookout/api/v1/operations","secret":"9c837984-99d7-4e6e-9b7d-c57210d70e51"}}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+      Alternate-Protocol:
+      - 443:quic
+      Content-Length:
+      - '1564'
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Caddy
+      X-Request-Id:
+      - 135296b2-3df2-4385-8489-f8d527011365
+      X-Runtime:
+      - '0.001150'
+      Date:
+      - Thu, 09 Mar 2017 09:30:00 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>The page you were looking for doesn't exist (404)</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>
+          body {
+            background-color: #EFEFEF;
+            color: #2E2F30;
+            text-align: center;
+            font-family: arial, sans-serif;
+            margin: 0;
+          }
+
+          div.dialog {
+            width: 95%;
+            max-width: 33em;
+            margin: 4em auto 0;
+          }
+
+          div.dialog > div {
+            border: 1px solid #CCC;
+            border-right-color: #999;
+            border-left-color: #999;
+            border-bottom-color: #BBB;
+            border-top: #B00100 solid 4px;
+            border-top-left-radius: 9px;
+            border-top-right-radius: 9px;
+            background-color: white;
+            padding: 7px 12% 0;
+            box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+          }
+
+          h1 {
+            font-size: 100%;
+            color: #730E15;
+            line-height: 1.5em;
+          }
+
+          div.dialog > p {
+            margin: 0 0 1em;
+            padding: 1em;
+            background-color: #F7F7F7;
+            border: 1px solid #CCC;
+            border-right-color: #999;
+            border-left-color: #999;
+            border-bottom-color: #999;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-top-color: #DADADA;
+            color: #666;
+            box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+          }
+          </style>
+        </head>
+
+        <body>
+          <!-- This file lives in public/404.html -->
+          <div class="dialog">
+            <div>
+              <h1>The page you were looking for doesn't exist.</h1>
+              <p>You may have mistyped the address or the page may have moved.</p>
+            </div>
+            <p>If you are the application owner check the logs for more information.</p>
+          </div>
+        </body>
+        </html>
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 09:30:00 GMT
+- request:
+    method: post
+    uri: https://lookout.stellar.staging.bloomnet.center/api/v1/wards
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"wards","attributes":{"address":"53a83253c5b3a5f61b296ed439adf40e","callback-url":"http://localhost:3000/stellar_lookout/api/v1/operations","secret":"dec24e94-1dd9-4326-b14d-25ad87e195d1"}}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+      Alternate-Protocol:
+      - 443:quic
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.api+json
+      Etag:
+      - W/"7ae0b8b783d6414dba61f6633303c875"
+      Location:
+      - https://lookout.stellar.staging.bloomnet.center/api/v1/wards/1
+      Server:
+      - Caddy
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 7b80e77f-ac13-44cf-a628-159edad6eac2
+      X-Runtime:
+      - '0.103607'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 09 Mar 2017 09:31:01 GMT
+      Content-Length:
+      - '297'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"1","type":"wards","links":{"self":"https://lookout.stellar.staging.bloomnet.center/api/v1/wards/1"},"attributes":{"address":"53a83253c5b3a5f61b296ed439adf40e","callback-url":"http://localhost:3000/stellar_lookout/api/v1/operations","secret":"dec24e94-1dd9-4326-b14d-25ad87e195d1"}}}'
+    http_version: 
+  recorded_at: Thu, 09 Mar 2017 09:31:01 GMT
+recorded_with: VCR 3.0.3

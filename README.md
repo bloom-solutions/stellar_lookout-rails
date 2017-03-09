@@ -30,32 +30,31 @@ $ gem install stellar_lookout
 ## Usage
 ### Configure
 
-In an initializer,
+In an initializer:
 
 ```
 StellarLookout.configure do |c|
-  c.priority_levels = {
-    high: { num: 0, interval: 6..20 }, # see below for an explanation of these values
-    low: { num: 1, interval: 6..200 },
-  }
+  c.server_url = "https://stellar-lookout-server.com" # https://github.com/imacchiato/stellar_lookout server
   c.on_receive = "ProcessStellarOperation" # you create this callback class. More on this later.
 end
 ```
 
-A few things about priority levels:
+### Watch an address
 
-- `priority_levels` configures an ActiveRecord Enum in the `StellarLookout::Ward` model. Therefore, you must specify a `num` integer that *should not* change unless you know what you're doing (it's like changing the number of an Enum)
-- `disabled` is reserved with a num of `-100`. If you attempt to use either of these values, you should see an error.
-- You will specify schedule that your background worker will check for wards that should be activated, I suggest nothing shorter than 6 seconds because a legder, as of today, takes almost 6 seconds to close. Anything quicker may pick up the next ledgers sooner, but most apps can afford to wait.
-- `interval` describes what the range will be of how often the ward will be triggered. It will increase in a fibonacci sequence starting at `8` until the max specified in your interval or until a new payment comes in. Given an interval of `6..200`, the ward will be triggered around:
-  - 6 + 8 seconds after it is created, no new payment detected
-  - 6 + 13 seconds after the last check, no new payment detected
-  - 6 + 21 seconds after the last check, no new payment detected
-  - 6 + 34 seconds after the last check, *new* payment detected - reset interval
-  - 6 + 8 seconds after the last check, no new payment detected
-  - 6 + 13 seconds after the last check, no new payment detected
-  - ... same sequence without new payments detected, until:
-  - 6 + 144 seconds after the last check. It will continue to check around every 150 seconds because the next sequence is greater than 200.
+```ruby
+# If ward is valid (i.e. address is unique, you get a Typhoeus::Response back)
+response = StellarLookout::Watch.("GAT6VDPXX26XXFAKACUJTIZAL3GSFJ4NECG7B3C3P63IP4233XFP2PCS")
+response.body # {"data":{"id":"1","type":"wards","links":{"self":"https://stellar-lookout-server.com/api/v1/wards/1"},"attributes":{"address":"53a83253c5b3a5f61b296ed439adf40e","callback-url":"http://localhost:3000/stellar_lookout/api/v1/operations","secret":"dec24e94-1dd9-4326-b14d-25ad87e195d1"}}}
+```
+
+```ruby
+# If ward is invalid, non-persisted ward:
+ward = StellarLookout::Watch.("GAT6VDPXX26XXFAKACUJTIZAL3GSFJ4NECG7B3C3P63IP4233XFP2PCS")
+ward.persisted? # false
+ward.errors
+```
+
+This is makes an HTTP call to the configured StellarLookout server.
 
 #### Callback Class
 
@@ -65,6 +64,7 @@ In your application code, create a callback class. Let's say it's called `Proces
 class ProcessStellarOperation
   def self.call(op)
     # You can do what you want here. `op` that is passed is a `StellarLookout::Operation`.
+    # This is executed within a controller request. If you will be doing anything heavy, enqueue it to a background worker.
   end
 end
 ```
@@ -83,37 +83,11 @@ op.to # "GAT6VDPXX26XXFAKACUJTIZAL3GSFJ4NECG7B3C3P63IP4233XFP2PCS"
 op.amount # 1000.0 => instead of a string, which is what the JSON returns, `BigDecimal` is returned so you can easily apply math operations
 ```
 
-#### Schedule
-
-In a scheduler, execute the `StellarLookout::Job` every 6 seconds. If you're using [sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron), put this in your schedule yaml:
-
-```yaml
-my_first_job:
-cron: "*/6 * * * *"
-class: "StellarLookout::Job"
-```
-
-Manage wards:
-
-```
-ward = StellarLookout::Ward.create(
-  address: "GAT6VDPXX26XXFAKACUJTIZAL3GSFJ4NECG7B3C3P63IP4233XFP2PCS",
-  priority: "high",
-)
-
-ward.disable! # disable a ward, checks will no longer be performed
-ward.low! # make this ward low priority
-ward.update_attributes(priority: "low") # since we're using enum, this will work too
-
-ward.operations # scope of `StellarLookout::Operation` models
-
-StellarLookout::Ward.low # returns all low priority wards
-StellarLookout::Ward.high # returns all high priority wards
-StellarLookout::Ward.disabled # returns all disabled wards
-```
-
 ## Contributing
-Contribution directions go here.
+
+- Copy `spec/config.yml.sample` to `spec/config.yml` and fill it up.
+- `rspec spec`
+- Submit a pull request
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
