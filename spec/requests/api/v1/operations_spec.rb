@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe "/api/v1/wards/:id/operations", type: :request do
 
-  let(:ward) { create(:ward) }
+  let(:ward) { create(:stellar_lookout_ward) }
   let(:uri) do
     StellarLookout::Engine.routes.url_helpers.
       api_v1_ward_operations_url(ward)

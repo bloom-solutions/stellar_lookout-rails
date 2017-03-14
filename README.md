@@ -83,6 +83,13 @@ op.to # "GAT6VDPXX26XXFAKACUJTIZAL3GSFJ4NECG7B3C3P63IP4233XFP2PCS"
 op.amount # 1000.0 => instead of a string, which is what the JSON returns, `BigDecimal` is returned so you can easily apply math operations
 ```
 
+## Factories
+
+To make development easier, if you use factory girl, you can include factories in your application: `require "stellar_lookout/factories"`.
+
+- `:stellar_lookout_operation`
+- `:stellar_lookout_ward`
+
 ## Contributing
 
 - Copy `spec/config.yml.sample` to `spec/config.yml` and fill it up.

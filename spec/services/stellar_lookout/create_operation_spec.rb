@@ -3,7 +3,7 @@ require 'spec_helper'
 module StellarLookout
   RSpec.describe CreateOperation do
 
-    let(:ward) { build_stubbed(:ward) }
+    let(:ward) { build_stubbed(:stellar_lookout_ward) }
     let(:operation_body) do
       {
         _links: {
@@ -34,7 +34,7 @@ module StellarLookout
         amount: "99999999959.9999700"
       }
     end
-    let(:operation) { build_stubbed(:operation) }
+    let(:operation) { build_stubbed(:stellar_lookout_operation) }
     let(:callback_class) do
       StellarLookout.configuration.on_receive.constantize
     end

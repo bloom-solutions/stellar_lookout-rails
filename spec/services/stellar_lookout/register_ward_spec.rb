@@ -8,7 +8,9 @@ module StellarLookout
     let(:callback_url) do
       Engine.routes.url_helpers.api_v1_ward_operations_url(ward)
     end
-    let(:ward) { create(:ward, address: address, secret: secret) }
+    let(:ward) do
+      create(:stellar_lookout_ward, address: address, secret: secret)
+    end
     let(:response) { instance_double(Typhoeus::Response) }
 
     it "creates the ward in the server" do

@@ -5,7 +5,7 @@ module StellarLookout
 
     context "address is already being watched" do
       before do
-        create(:ward, address: "123")
+        create(:stellar_lookout_ward, address: "123")
       end
 
       it "returns true" do

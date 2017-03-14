@@ -3,7 +3,9 @@ require 'spec_helper'
 module StellarLookout
   RSpec.describe CheckSignature do
 
-    let(:ward) { build_stubbed(:ward, secret: SecureRandom.uuid) }
+    let(:ward) do
+      build_stubbed(:stellar_lookout_ward, secret: SecureRandom.uuid)
+    end
     let(:json) { {operation: "body"}.to_json }
     let(:hmac_signature) { OpenSSL::HMAC.hexdigest("SHA256", signing_key, json) }
     subject { described_class.(ward: ward, headers: headers, json: json) }
