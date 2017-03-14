@@ -3,7 +3,7 @@ module StellarLookout
 
     has_many :operations
 
-    validates :address, uniqueness: true
+    validates :address, uniqueness: true, presence: true
 
   end
 end

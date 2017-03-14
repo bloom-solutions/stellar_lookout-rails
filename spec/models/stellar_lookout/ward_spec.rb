@@ -10,6 +10,7 @@ module StellarLookout
     describe "validations" do
       subject { create(:ward) }
       it { is_expected.to validate_uniqueness_of(:address) }
+      it { is_expected.to validate_presence_of(:address) }
     end
 
   end
