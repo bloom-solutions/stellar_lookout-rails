@@ -29,6 +29,11 @@ module StellarLookout
         end
 
         it { is_expected.to eq operation }
+
+        it "sets the operation and skips the rest of the steps" do
+          expect(resulting_operation).to eq operation
+          expect(resulting_ctx).to be_skip_all
+        end
       end
 
       context "operation does not exist" do

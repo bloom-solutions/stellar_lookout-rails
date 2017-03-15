@@ -11,7 +11,11 @@ module StellarLookout
 
         c.operation = Operation.find_by(external_id: body["id"])
 
-        next c if c.operation.present?
+        if c.operation.present?
+          c.skip_all!
+          next c
+        end
+
         c.operation = Operation.create(
           ward_id: c.ward.id,
           txn_external_id: c.txn.external_id,
