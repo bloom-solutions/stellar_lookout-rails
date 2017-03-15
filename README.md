@@ -27,6 +27,13 @@ Or install it yourself as:
 $ gem install stellar_lookout
 ```
 
+Copy the migrations over:
+
+```bash
+rails stellar_lookout:install:migrations
+rake db:migrate
+```
+
 ## Usage
 ### Configure
 
