@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314091310) do
+ActiveRecord::Schema.define(version: 20170309040852) do
 
   create_table "stellar_lookout_operations", force: :cascade do |t|
     t.integer  "ward_id"
