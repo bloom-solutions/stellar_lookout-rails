@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+language: ruby
+cache: bundler
+rvm:
+  - 2.3.1
+before_script:
+  - bundle exec rake app:db:create app:db:test:prepare
+notifications:
+  slack:
+    secure: gEX2BsQDKhun+gTmDOdXsKzMNmW9XAvQMgUhCR+ec4131EUpp4t9rtzrikecvqM1DmhxVLIuduznXMjusvj27ygtyEMYxxplRM3y4qgO0z9iK6YA+G4ljnMrir56hq6AZh1RRmPS0BEyI/u5GiAUgEJB8hN9BgTIQAQlKA6acEw4MAXgg4KnSHOhh0bh58YvWcE0qdVUXS5RmI3apXwSoMEm0xv0F573deSKH3Jyg5p/nmBgcugYIu+WCwL6DsINbPbd1nKnAWAr6s1soJlxb7rJNK9vpBbgjv/2W55VNWTVCbED8TG9iKUySTTzuQJ6UQQ7ubONVT77ti1jXsXz9M4ugfm7MVZWoUapzRaT6B+yAwQY+lJ8nT0SpnSBtFOq2kKkEmZtSmYbmuUQ58AWg+hwGujjnhPZNoUchLHJ+kC7Cmc6ms4Z3yjtBc600xn3V88mGfeIzgX1RTOCE7FwWF14tA+t99n8rGyNBawbGLISm539cqLHVhIvQY6dNGnjT3ggOGBGJ3pWdIRW/qHlOFMndh3/Cf3PUyFMJGIbaLKNDc8I/SvegYJ7RR9fZvzEXUfQEtdCY5YYk8K7z3MVyStxdiKtSRrp08h6739Q/Biq5eoHwIo/zAyHrBJ1VTf95nRDa6j4Ri67hBmwWhgmjxyFzYbfd/ZScNTZv7IF+/U=
