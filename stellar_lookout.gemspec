@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "typhoeus", "~> 1.0"
   s.add_dependency "gem_config"
   s.add_dependency "storext", "~> 2.0"
+  s.add_dependency "light-service"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

@@ -12,7 +12,8 @@ module StellarLookout
           })
 
           if correct_signature
-            @operation = ProcessOperation.(ward: ward, json: params[:body])
+            @operation = ProcessOperation.(ward: ward, json: params[:body]).
+              operation
             respond_to do |format|
               format.json { render json: @operation.body, status: :created }
             end

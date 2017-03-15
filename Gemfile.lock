@@ -11,6 +11,7 @@ PATH
   specs:
     stellar_lookout-rails (0.1.0)
       gem_config
+      light-service
       rails (~> 5.0.2)
       storext (~> 2.0)
       typhoeus (~> 1.0)
@@ -93,6 +94,8 @@ GEM
       activerecord (>= 4.1)
       concurrent-ruby
       railties (>= 4.1)
+    light-service (0.8.0)
+      activesupport (>= 3.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)

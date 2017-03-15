@@ -1,5 +1,6 @@
 require "gem_config"
 require "jsonapi-resources"
+require "light-service"
 require "storext"
 require "typhoeus"
 require "stellar_lookout/engine"
