@@ -14,6 +14,8 @@ Dir[StellarLookout::Engine.root.join("spec/support/**/*.rb")].each do |f|
   require f
 end
 
+FIXTURES_DIR = Pathname.new(File.dirname(__FILE__)).join("fixtures")
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end

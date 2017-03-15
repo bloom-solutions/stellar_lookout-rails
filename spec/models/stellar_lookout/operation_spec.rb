@@ -5,10 +5,14 @@ module StellarLookout
 
     describe "associations" do
       it { is_expected.to belong_to(:ward) }
+      it do
+        is_expected.to belong_to(:txn).
+          with_primary_key(:external_id).
+          with_foreign_key(:txn_external_id)
+      end
     end
 
     describe "attributes" do
-      it { is_expected.to have_attribute(:id, String) }
       it { is_expected.to have_attribute(:paging_token, String) }
       it { is_expected.to have_attribute(:source_account, String) }
       it { is_expected.to have_attribute(:type, String) }
