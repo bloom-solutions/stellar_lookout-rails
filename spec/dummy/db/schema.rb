@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314101420) do
+ActiveRecord::Schema.define(version: 20170314091310) do
 
   create_table "stellar_lookout_operations", force: :cascade do |t|
     t.integer  "ward_id"
-    t.text     "body",                         null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "txn_external_id"
-    t.string   "external_id",     default: "", null: false
+    t.text     "body",            null: false
+    t.string   "txn_external_id", null: false
+    t.string   "external_id",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["external_id"], name: "index_stellar_lookout_operations_on_external_id"
     t.index ["txn_external_id"], name: "index_stellar_lookout_operations_on_txn_external_id"
     t.index ["ward_id"], name: "index_stellar_lookout_operations_on_ward_id"
