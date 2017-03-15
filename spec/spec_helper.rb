@@ -5,7 +5,6 @@ require "pry"
 require "shoulda-matchers"
 require "factory_girl_rails"
 require 'rspec/rails'
-require "jsonapi/resources/matchers"
 require "storext-matchers"
 
 # Requires supporting ruby files with custom matchers and macros, etc,

@@ -12,6 +12,3 @@ gemspec
 
 # To use a debugger
 gem 'pry-byebug', group: [:development, :test]
-
-# NOTE: until 2.0 is released
-gem "jsonapi-resources-matchers", github: "G5/jsonapi-resources-matchers", ref: "25b0750"
