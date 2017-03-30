@@ -4,7 +4,7 @@ module StellarLookout
       class OperationsController < BaseController
 
         def create
-          ward = Ward.find_by!(params[:ward_id])
+          ward = Ward.find(params[:ward_id])
           correct_signature = CheckSignature.({
             ward: ward,
             headers: request.headers,
