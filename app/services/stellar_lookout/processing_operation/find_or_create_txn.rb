@@ -9,10 +9,10 @@ module StellarLookout
       executed do |c|
         body = c.transaction_body
 
-        c.txn = Txn.find_by(external_id: body["id"])
+        c.txn = StellarLookout::Txn.find_by(external_id: body["id"])
 
         next c if c.txn.present?
-        c.txn = Txn.create(external_id: body["id"], body: body)
+        c.txn = StellarLookout::Txn.create(external_id: body["id"], body: body)
       end
 
     end
