@@ -46,6 +46,13 @@ StellarLookout.configure do |c|
 end
 ```
 
+Add to your routes:
+
+
+```ruby
+mount StellarLookout::Engine => "/stellar_lookout"
+```
+
 ### Watch an address
 
 ```ruby
