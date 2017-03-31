@@ -39,7 +39,7 @@ rake db:migrate
 
 In an initializer:
 
-```
+```ruby
 StellarLookout.configure do |c|
   c.server_url = "https://stellar-lookout-server.com" # https://github.com/imacchiato/stellar_lookout server
   c.on_receive = "ProcessStellarOperation" # you create this callback class. More on this later.
