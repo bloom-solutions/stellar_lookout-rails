@@ -5,9 +5,6 @@ module StellarLookout
 
     let(:address) { SecureRandom.hex }
     let(:secret) { SecureRandom.uuid }
-    let(:callback_url) do
-      Engine.routes.url_helpers.api_v1_ward_operations_url(ward)
-    end
     let(:ward) do
       create(:stellar_lookout_ward, address: address, secret: secret)
     end
@@ -21,7 +18,7 @@ module StellarLookout
             type: "wards",
             attributes: {
               address: ward.address,
-              "callback-url" => callback_url,
+              "callback-url" => GenCallbackUrl.(ward),
               secret: secret,
             }
           }

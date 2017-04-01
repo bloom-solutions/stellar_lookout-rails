@@ -8,7 +8,7 @@ module StellarLookout
             type: "wards",
             attributes: {
               address: ward.address,
-              "callback-url" => callback_url(ward),
+              "callback-url" => GenCallbackUrl.(ward),
               secret: ward.secret,
             }
           }
@@ -26,10 +26,6 @@ module StellarLookout
       uri = URI.parse(host)
       uri.path = "/api/v1/wards"
       uri.to_s
-    end
-
-    def self.callback_url(ward)
-      Engine.routes.url_helpers.api_v1_ward_operations_url(ward)
     end
 
   end
