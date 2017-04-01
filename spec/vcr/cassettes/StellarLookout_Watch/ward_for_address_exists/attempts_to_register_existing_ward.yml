@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://lookout.stellar.staging.bloomnet.center/api/v1/wards
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"wards","attributes":{"address":"123","callback-url":"http://localhost:3000/stellar_lookout/api/v1/wards/1/operations","secret":"cdf431a6-2f81-4c69-9985-f4e81a62fd50"}}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Content-Type:
+      - application/vnd.api+json
+      Accept:
+      - application/vnd.api+json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+      Alternate-Protocol:
+      - 443:quic
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.api+json
+      Etag:
+      - W/"add9fb6dcab2192de62c30dc05d26ddd"
+      Location:
+      - https://lookout.stellar.staging.bloomnet.center/api/v1/wards/2
+      Server:
+      - Caddy
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - f0470cad-fe89-47e1-b674-d0181ce11f52
+      X-Runtime:
+      - '0.009411'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Sat, 01 Apr 2017 05:15:55 GMT
+      Content-Length:
+      - '276'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"2","type":"wards","links":{"self":"https://lookout.stellar.staging.bloomnet.center/api/v1/wards/2"},"attributes":{"address":"123","callback-url":"http://localhost:3000/stellar_lookout/api/v1/wards/1/operations","secret":"cdf431a6-2f81-4c69-9985-f4e81a62fd50"}}}'
+    http_version: 
+  recorded_at: Sat, 01 Apr 2017 05:15:56 GMT
+recorded_with: VCR 3.0.3

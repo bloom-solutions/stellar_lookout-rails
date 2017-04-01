@@ -3,14 +3,14 @@ require 'spec_helper'
 module StellarLookout
   RSpec.describe Watch, vcr: {record: :once} do
 
-    context "address is already being watched" do
+    context "ward for address exists" do
       before do
         create(:stellar_lookout_ward, address: "123")
       end
 
-      it "returns true" do
-        result = described_class.("123")
-        expect(result).to be true
+      it "attempts to register existing ward" do
+        response = described_class.("123")
+        expect(response).to be_success
       end
     end
 
