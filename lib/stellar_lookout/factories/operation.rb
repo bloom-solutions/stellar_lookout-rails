@@ -4,6 +4,7 @@ FactoryGirl.define do
     association :ward, factory: :stellar_lookout_ward
     association :txn, factory: :stellar_lookout_txn
     body { {id: "12884905985"} }
+    external_id { "12884905985" }
   end
 
 end
