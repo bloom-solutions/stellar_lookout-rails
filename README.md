@@ -6,9 +6,6 @@ This gem:
 
 - in case of downtime, will be able to backtrack to unprocessed payments when the connection is resumed (do not rely on SSE)
 - rely on a background worker to efficiently query addresses that you care about
-- be efficient with the calls; have back-off so that older "wards" check less frequently
-- is customizable enough to have different levels of priority
-- be able to disable wards for addresses you no longer care about
 
 ## Installation
 Add this line to your application's Gemfile:
